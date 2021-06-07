@@ -2,6 +2,8 @@
 
 This service returns if a given number is a prime number
 
+Do not use, this is just a demo to burn CPU
+
 ## Setup
 
 Run `npm install`
