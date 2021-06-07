@@ -7,8 +7,8 @@ function isPrime(value) {
     if(value % i === 0) {
       return false;
     }
-    // Print some logs every 1M
-    if(value % 1000000 === 0) {
+    // Print some logs every 1,000,000
+    if(i % 1000000000 === 0) {
       console.log(`Currently at ${value}`);
     }
   }
