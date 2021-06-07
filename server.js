@@ -7,6 +7,10 @@ function isPrime(value) {
     if(value % i === 0) {
       return false;
     }
+    // Print some logs every 1M
+    if(value % 1000000 === 0) {
+      console.log(`Currently at ${value}`);
+    }
   }
   return value > 1;
 }
@@ -16,15 +20,25 @@ app.get('/', (req, res) => {
   if(!req.query.num) {
     return res.send(`Please provide a number via URL parameter, example: <a href="/?num=2038074743">?num=2038074743</a>`);
   }
+  
+  if(req.query.async) {
+    res.send('got it, check logs for the answer.')
+  }
 
   const num = parseInt(req.query.num);
 
+  console.log(`Is ${num} prime?`);
+  
   let message = `Sorry, ${num} is not prime :(`;
   if(isPrime(num)) { 
     message = `It looks like ${num} is prime!`;
   }
+  
+  console.log(message);
 
-  res.send(message);
+  if(!req.query.async) {
+    res.send(message);
+  }
 })
 
 
